@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 Shuichi Tsutsumi. All rights reserved.
 //
 
-#import "AudioUnitHelper+PlayFile.h"
+#import "TTMAudioUnitHelper+PlayFile.h"
 
 @implementation TTMAudioUnitHelper (PlayFile)
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 Shuichi Tsutsumi. All rights reserved.
 //
 
-#import "AudioUnitHelper+Record.h"
+#import "TTMAudioUnitHelper+Record.h"
 
 @implementation TTMAudioUnitHelper (Record)
 
