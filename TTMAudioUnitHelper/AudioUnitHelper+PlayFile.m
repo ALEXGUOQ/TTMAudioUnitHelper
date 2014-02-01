@@ -20,18 +20,18 @@
                                           &audioFileObject);
     
     if (noErr != result || NULL == audioFileObject) {
-
+        
         NSLog(@"error:%d", (int)result);
-
+        
         return soundStruct;
     }
-
+    
     // オーディオファイルのプロパティを取得
     // （ファイルの長さをフレーム数で取得）
     UInt64 totalFramesInFile = [TTMAudioUnitHelper getTotalFramesInFile:audioFileObject];
     
     // SoundStructにファイルのフレーム数をセット
-    soundStruct.totalFrames = (unsigned int)totalFramesInFile;
+    soundStruct.totalFrames = totalFramesInFile;
     
     // オーディオファイルのプロパティを取得
     // （データフォーマットを取得）
@@ -43,14 +43,14 @@
     
     
     // ---- SoundStructにデータ読み込み用のメモリ領域を確保 ----
-    soundStruct.audioDataLeft = (AudioUnitSampleType *)calloc(totalFramesInFile,
+    soundStruct.audioDataLeft = (AudioUnitSampleType *)calloc((size_t)totalFramesInFile,
                                                               sizeof(AudioUnitSampleType));
     
     if (2 == channelCount) {
         
         soundStruct.isStereo = YES;
         
-        soundStruct.audioDataRight = (AudioUnitSampleType *)calloc(totalFramesInFile,
+        soundStruct.audioDataRight = (AudioUnitSampleType *)calloc((size_t)totalFramesInFile,
                                                                    sizeof(AudioUnitSampleType));
     }
     else if (1 == channelCount) {
@@ -68,7 +68,7 @@
     
     // データフォーマットをセット
     [TTMAudioUnitHelper setClientDataFormatForFile:audioFileObject
-                                    numChannels:channelCount];
+                                       numChannels:channelCount];
     
     
     // AudioBufferListを作成
@@ -76,13 +76,13 @@
     if (2 == channelCount) {
         
         bufferList = [TTMAudioUnitHelper audioBufferListFromAudioDataL:soundStruct.audioDataLeft
-                                                         audioDataR:soundStruct.audioDataRight
-                                                        totalFrames:totalFramesInFile];
+                                                            audioDataR:soundStruct.audioDataRight
+                                                           totalFrames:totalFramesInFile];
     }
     else {
         
         bufferList = [TTMAudioUnitHelper audioBufferListFromAudioData:soundStruct.audioDataLeft
-                                                       totalFrames:totalFramesInFile];
+                                                          totalFrames:totalFramesInFile];
     }
     
     // 読み込み開始
@@ -121,7 +121,7 @@
 }
 
 + (void)freeSoundStruct:(SoundStruct *)soundStruct {
-
+    
     free(soundStruct->audioDataLeft);
     soundStruct->audioDataLeft = 0;
     

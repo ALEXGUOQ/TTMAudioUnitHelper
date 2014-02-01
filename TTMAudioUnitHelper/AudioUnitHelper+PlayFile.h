@@ -13,7 +13,7 @@
 typedef struct {
     
     BOOL                 isStereo;           // set to true if there is data in the audioDataRight member
-    UInt32               totalFrames;        // the total number of frames in the audio data
+    UInt64               totalFrames;        // the total number of frames in the audio data
     UInt32               currentFrame;       // the next audio sample to play
     AudioUnitSampleType  *audioDataLeft;     // the complete left (or mono) channel of audio data read from an audio file
     AudioUnitSampleType  *audioDataRight;    // the complete right channel of audio data read from an audio file

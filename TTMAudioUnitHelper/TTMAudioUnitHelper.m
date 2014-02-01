@@ -48,13 +48,13 @@
     
     // set up the AudioBuffer structs in the buffer list
     bufferList->mBuffers[0].mNumberChannels  = 1;
-    bufferList->mBuffers[0].mDataByteSize    = totalFrames * sizeof(AudioUnitSampleType);
+    bufferList->mBuffers[0].mDataByteSize    = (UInt32)totalFrames * sizeof(AudioUnitSampleType);
     bufferList->mBuffers[0].mData            = audioDataL;
     
     if (2 == numChannels) {
         
         bufferList->mBuffers[1].mNumberChannels  = 1;
-        bufferList->mBuffers[1].mDataByteSize    = totalFrames * sizeof(AudioUnitSampleType);
+        bufferList->mBuffers[1].mDataByteSize    = (UInt32)totalFrames * sizeof(AudioUnitSampleType);
         bufferList->mBuffers[1].mData            = audioDataR;
     }
     
@@ -88,12 +88,12 @@
     
     NSLog (@"  Sample Rate:         %10.0f",  asbd.mSampleRate);
     NSLog (@"  Format ID:           %10s",    formatIDString);
-    NSLog (@"  Format Flags:        %10lu",    asbd.mFormatFlags);
-    NSLog (@"  Bytes per Packet:    %10lu",    asbd.mBytesPerPacket);
-    NSLog (@"  Frames per Packet:   %10lu",    asbd.mFramesPerPacket);
-    NSLog (@"  Bytes per Frame:     %10lu",    asbd.mBytesPerFrame);
-    NSLog (@"  Channels per Frame:  %10lu",    asbd.mChannelsPerFrame);
-    NSLog (@"  Bits per Channel:    %10lu",    asbd.mBitsPerChannel);
+    NSLog (@"  Format Flags:        %lu",    (unsigned long)asbd.mFormatFlags);
+    NSLog (@"  Bytes per Packet:    %lu",    (unsigned long)asbd.mBytesPerPacket);
+    NSLog (@"  Frames per Packet:   %lu",    (unsigned long)asbd.mFramesPerPacket);
+    NSLog (@"  Bytes per Frame:     %lu",    (unsigned long)asbd.mBytesPerFrame);
+    NSLog (@"  Channels per Frame:  %lu",    (unsigned long)asbd.mChannelsPerFrame);
+    NSLog (@"  Bits per Channel:    %lu",    (unsigned long)asbd.mBitsPerChannel);
 }
 
 
@@ -191,7 +191,7 @@
     
     if (noErr != result) {
         
-        NSLog(@"error:%ld", result);
+        NSLog(@"error:%ld", (long)result);
         
         return;
     }
@@ -203,7 +203,7 @@
 	
 	if (result) {
         
-        NSLog(@"error:%ld", result);
+        NSLog(@"error:%ld", (long)result);
         
         return;
     }
@@ -225,7 +225,7 @@
     
     if (noErr != result) {
         
-        NSLog(@"error:%ld", result);
+        NSLog(@"error:%ld", (long)result);
         
         return;
     }
@@ -238,7 +238,7 @@
     
     if (noErr != result) {
         
-        NSLog(@"error:%ld", result);
+        NSLog(@"error:%ld", (long)result);
         
         return;
     }
@@ -278,10 +278,10 @@
     asbd.mFormatID          = kAudioFormatLinearPCM;
     asbd.mFormatFlags       = kAudioFormatFlagsAudioUnitCanonical;
     asbd.mChannelsPerFrame  = numChannels;
-    asbd.mBytesPerPacket    = bytesPerSample;
-    asbd.mBytesPerFrame     = bytesPerSample;
+    asbd.mBytesPerPacket    = (UInt32)bytesPerSample;
+    asbd.mBytesPerFrame     = (UInt32)bytesPerSample;
     asbd.mFramesPerPacket   = 1;
-    asbd.mBitsPerChannel    = 8 * bytesPerSample;
+    asbd.mBitsPerChannel    = 8 * (UInt32)bytesPerSample;
     asbd.mReserved           = 0;
 
     return asbd;
@@ -306,7 +306,7 @@
     
     if (noErr != result) {
 
-        NSLog(@"error:%ld", result);
+        NSLog(@"error:%ld", (long)result);
     }
     
     return totalFramesInFile;
@@ -326,7 +326,7 @@
     
     if (noErr != result) {
         
-        NSLog(@"error:%ld", result);
+        NSLog(@"error:%ld", (long)result);
     }
     
     return fileAudioFormat;
@@ -350,7 +350,7 @@
     
     if (noErr != result) {
         
-        NSLog(@"error:%ld", result);
+        NSLog(@"error:%ld", (long)result);
     }
 }
 
@@ -359,18 +359,18 @@
                                        totalFrames:(UInt64)totalFrames
 {
     return [TTMAudioUnitHelper audioBufferListFromAudioDataL:audioDataL
-                                               audioDataR:audioDataR
-                                              numChannels:2
-                                              totalFrames:totalFrames];
+                                                  audioDataR:audioDataR
+                                                 numChannels:2
+                                                 totalFrames:totalFrames];
 }
 
 + (AudioBufferList *)audioBufferListFromAudioData:(AudioUnitSampleType *)audioData
                                        totalFrames:(UInt64)totalFrames
 {
     return [TTMAudioUnitHelper audioBufferListFromAudioDataL:audioData
-                                               audioDataR:NULL
-                                              numChannels:1
-                                              totalFrames:totalFrames];
+                                                  audioDataR:NULL
+                                                 numChannels:1
+                                                 totalFrames:totalFrames];
 }
 
 @end
