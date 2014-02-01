@@ -21,6 +21,9 @@
 		8A7FB647189CC9F600575BB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7FB629189CC9F600575BB0 /* UIKit.framework */; };
 		8A7FB64F189CC9F600575BB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A7FB64D189CC9F600575BB0 /* InfoPlist.strings */; };
 		8A7FB651189CC9F600575BB0 /* TTMAudioUnitHelperDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7FB650189CC9F600575BB0 /* TTMAudioUnitHelperDemoTests.m */; };
+		8A7FB661189CCA2A00575BB0 /* AudioUnitHelper+PlayFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7FB65C189CCA2900575BB0 /* AudioUnitHelper+PlayFile.m */; };
+		8A7FB662189CCA2A00575BB0 /* AudioUnitHelper+Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7FB65E189CCA2900575BB0 /* AudioUnitHelper+Record.m */; };
+		8A7FB663189CCA2A00575BB0 /* TTMAudioUnitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7FB660189CCA2A00575BB0 /* TTMAudioUnitHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		8A7FB64C189CC9F600575BB0 /* TTMAudioUnitHelperDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TTMAudioUnitHelperDemoTests-Info.plist"; sourceTree = "<group>"; };
 		8A7FB64E189CC9F600575BB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8A7FB650189CC9F600575BB0 /* TTMAudioUnitHelperDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTMAudioUnitHelperDemoTests.m; sourceTree = "<group>"; };
+		8A7FB65B189CCA2900575BB0 /* AudioUnitHelper+PlayFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AudioUnitHelper+PlayFile.h"; sourceTree = "<group>"; };
+		8A7FB65C189CCA2900575BB0 /* AudioUnitHelper+PlayFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AudioUnitHelper+PlayFile.m"; sourceTree = "<group>"; };
+		8A7FB65D189CCA2900575BB0 /* AudioUnitHelper+Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AudioUnitHelper+Record.h"; sourceTree = "<group>"; };
+		8A7FB65E189CCA2900575BB0 /* AudioUnitHelper+Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AudioUnitHelper+Record.m"; sourceTree = "<group>"; };
+		8A7FB65F189CCA2900575BB0 /* TTMAudioUnitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAudioUnitHelper.h; sourceTree = "<group>"; };
+		8A7FB660189CCA2A00575BB0 /* TTMAudioUnitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAudioUnitHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +91,7 @@
 		8A7FB619189CC9F600575BB0 = {
 			isa = PBXGroup;
 			children = (
+				8A7FB65A189CCA2900575BB0 /* TTMAudioUnitHelper */,
 				8A7FB62B189CC9F600575BB0 /* TTMAudioUnitHelperDemo */,
 				8A7FB64A189CC9F600575BB0 /* TTMAudioUnitHelperDemoTests */,
 				8A7FB624189CC9F600575BB0 /* Frameworks */,
@@ -150,6 +160,19 @@
 				8A7FB64D189CC9F600575BB0 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8A7FB65A189CCA2900575BB0 /* TTMAudioUnitHelper */ = {
+			isa = PBXGroup;
+			children = (
+				8A7FB65B189CCA2900575BB0 /* AudioUnitHelper+PlayFile.h */,
+				8A7FB65C189CCA2900575BB0 /* AudioUnitHelper+PlayFile.m */,
+				8A7FB65D189CCA2900575BB0 /* AudioUnitHelper+Record.h */,
+				8A7FB65E189CCA2900575BB0 /* AudioUnitHelper+Record.m */,
+				8A7FB65F189CCA2900575BB0 /* TTMAudioUnitHelper.h */,
+				8A7FB660189CCA2A00575BB0 /* TTMAudioUnitHelper.m */,
+			);
+			path = TTMAudioUnitHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7FB662189CCA2A00575BB0 /* AudioUnitHelper+Record.m in Sources */,
+				8A7FB661189CCA2A00575BB0 /* AudioUnitHelper+PlayFile.m in Sources */,
 				8A7FB63C189CC9F600575BB0 /* ViewController.m in Sources */,
 				8A7FB636189CC9F600575BB0 /* AppDelegate.m in Sources */,
+				8A7FB663189CCA2A00575BB0 /* TTMAudioUnitHelper.m in Sources */,
 				8A7FB632189CC9F600575BB0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
